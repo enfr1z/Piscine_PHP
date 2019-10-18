@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+    </head>
+    <body>
+        <div>
+            <input class="num1" type="text">
+            <select class="select">
+                <option> + </option>
+                <option> - </option>
+                <option> * </option>
+                <option> / </option>
+                <option> % </option>
+            </select>
+            <input class="num2" type="text">
+            <input class="but" type="button" name="Try me" value="Try me">
+        </div>
+        <script>
+            var num1 = document.querySelector(".num1");
+            var num2 = document.querySelector('.num2');
+            var sign = document.querySelector("select");
+            var sum;
+            function printError(flag) {
+                if (flag === 1) {
+                    alert("Error :(");
+                }
+                else if (flag === 2) {
+                    alert("It's over 9000!")
+                }
+            }
+            function printSum() {
+                console.log(sum);
+                alert(sum);
+            }
+            function validNum(num1, num2) {
+                if (!isNaN(num1) && !isNaN(num2) &&
+                    Number.isInteger(num1) && Number.isInteger(num2) &&
+                    num1 >= 0 && num2 >= 0)
+                {
+                    return true;
+                }
+                else
+                    return false;
+            }
+            window.onload = function() {
+                setInterval("alert('Please, use me...')", 30000)
+            };
+            document.querySelector('.but').addEventListener('click', function () {
+                if (validNum(+num1.value, +num2.value)) {
+                    switch (sign.value) {
+                        case '+':
+                            sum = (+num1.value) + (+num2.value);
+                            break ;
+                        case '-':
+                            sum = (+num1.value) - (+num2.value);
+                            break ;
+                        case '*':
+                            sum = (+num1.value) * (+num2.value);
+                            break ;
+                        case '/':
+                            if (+num2.value == 0) {
+                                printError(2);
+                                sum = (+num1.value) / (+num2.value);
+                                console.log(sum);
+                                return;
+                            }
+                            else if (sign.value == '/') {
+                                sum = (+num1.value) / (+num2.value);
+                            }
+                            break ;
+                        case '%':
+                            if (+num2.value == 0) {
+                                printError(2);
+                                sum = (+num1.value) % (+num2.value);
+                                console.log(sum);
+                                return;
+                            }
+                            else{
+                                sum = (+num1.value) % (+num2.value);
+                            }
+                            break ;
+                    }
+                    printSum();
+                }
+                else
+                    printError(1);
+            })
+        </script>
+    </body>
+</html>

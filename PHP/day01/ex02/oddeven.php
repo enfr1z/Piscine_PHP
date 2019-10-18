@@ -1,7 +1,6 @@
-#!usr/bin/php
+#!/usr/bin/php
 
 <?php
-
 	while (21)
 	{
 		echo "Enter a number: ";

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <style>
+            .balloon {
+                height: 200px;
+                width: 200px;
+                background-color: red;
+                border-radius: 50%;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="balloon"></div>
+        <script>
+            var colorTable = {  0: "red",
+                                1: "green",
+                                2: "blue"};
+            var iter = 0;
+            function changeColor() {
+                elem.style.backgroundColor = colorTable[iter = iter == 2 ? 0 : iter + 1];
+            }
+            function reverseChangeColor() {
+                elem.style.backgroundColor = colorTable[iter = iter == 0 ? 2 : iter -1];
+            }
+            function zoomIn() {
+                console.log("zoomIn | click");
+                changeColor();
+                elem.style.width = elem.clientWidth + 10 + 'px';
+                elem.style.height = elem.clientHeight + 10 + 'px';
+            }
+            function resetSize() {
+                console.log("resetSize | click");
+                changeColor();
+                elem.style.width = 200 + 'px';
+                elem.style.height = 200 + 'px';
+
+            }
+            function zoomOut() {
+                console.log("zoomOut | click");
+                reverseChangeColor();
+                elem.style.width = elem.clientWidth - 5 + 'px';
+                elem.style.height = elem.clientHeight - 5 + 'px';
+            }
+
+            var elem = document.querySelector('.balloon');
+                elem.addEventListener("click", function () {
+                    if (elem.clientWidth < 420)
+                        zoomIn();
+                    else if (elem.clientWidth >= 420)
+                        resetSize();
+                });
+                elem.addEventListener("mouseout", function () {
+                    if (elem.clientWidth > 200)
+                        zoomOut();
+                });
+        </script>
+    </body>
+</html>

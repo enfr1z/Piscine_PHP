@@ -3,7 +3,7 @@
 <?php
 	function ft_is_sort($argv)
     	{
-    		if (count($argv) == 1)
+    		if ($argc == 1)
     			return (TRUE);
     		$tmp = $argv;
     		sort($tmp);

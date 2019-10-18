@@ -1,10 +1,12 @@
-#!usr/bin/php
+#!/usr/bin/php
 
 <?php
 
 	function ft_split($string)
 	{
-		return (array_values(array_filter(explode(" ", $string))));
+		$array = array_values(array_filter(explode(" ", $string)));
+		sort($array);
+		return ($array);
 	}
 
 	if ($argc > 1)
