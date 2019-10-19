@@ -27,6 +27,7 @@
             function zoomIn() {
                 console.log("zoomIn | click");
                 changeColor();
+                console.dir(elem);
                 elem.style.width = elem.clientWidth + 10 + 'px';
                 elem.style.height = elem.clientHeight + 10 + 'px';
             }
